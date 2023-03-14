@@ -4,7 +4,7 @@ namespace sortlib{
     template <class T>
     void bubbleSort(T data[], int n){
         for(int i = 0; i < n; i++){
-            for(int j = 0; j < n; j++){
+            for(int j = 0; j < n-1; j++){
                 if(data[j] > data[j+1]) std::swap(data[j], data[j+1]);
             }
         }
