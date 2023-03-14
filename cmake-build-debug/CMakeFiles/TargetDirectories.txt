@@ -1,0 +1,3 @@
+C:/Users/Admin/WebstormProjects/StudentAffairsWebsite/Library-of-Sorting-Algoroithms/cmake-build-debug/CMakeFiles/Library_of_Sorting_Algoroithms.dir
+C:/Users/Admin/WebstormProjects/StudentAffairsWebsite/Library-of-Sorting-Algoroithms/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Admin/WebstormProjects/StudentAffairsWebsite/Library-of-Sorting-Algoroithms/cmake-build-debug/CMakeFiles/rebuild_cache.dir

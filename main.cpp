@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 
 namespace sortlib{
+    // Bubble Sort
     template <class T>
     void bubbleSort(T data[], int n){
         for(int i = 0; i < n; i++){
@@ -8,6 +9,71 @@ namespace sortlib{
                 if(data[j] > data[j+1]) std::swap(data[j], data[j+1]);
             }
         }
+    }
+
+    // Insertion Sort
+    template<typename T>
+    void insertionSort(T arr[], int n){
+        for (int i=1; i < n; i++){
+            int j=i;
+            while (j > 0 && arr[j-1] > arr[j]){
+                swap(arr[j], arr[j-1]);
+                j--;
+            }
+        }
+    }
+
+    // Merge Sort
+    template<typename T>
+    void merge(int left, int right, int mid, T arr[]){
+        int size1 = mid - left + 1;
+        int size2 = right - mid;
+
+        T arr1[size1];
+        T arr2[size2];
+
+        for (int i=0; i < size1; i++)
+            arr1[i] = arr[left+i];
+        for (int i=0; i < size2; i++)
+            arr2[i] = arr[mid+1+i];
+
+        int index1 = 0;
+        int index2 = 0;
+        int indexMerge = left;
+
+        while (index1 < size1 && index2 < size2){
+            if (arr1[index1] <= arr2[index2]){
+                arr[indexMerge] = arr1[index1];
+                index1++;
+            }
+            else{
+                arr[indexMerge] = arr2[index2];
+                index2++;
+            }
+            indexMerge++;
+        }
+
+        while(index1 < size1){
+            arr[indexMerge] = arr1[index1];
+            index1++;
+            indexMerge++;
+        }
+
+        while (index2 < size2){
+            arr[indexMerge] = arr2[index2];
+            index2++;
+            indexMerge++;
+        }
+    }
+
+    template<typename T>
+    void mergeSort(T arr[], int start, int end){
+        if (start >= end)
+            return;
+        int mid = start + (end - start)/2;
+        mergeSort(arr, start, mid);
+        mergeSort(arr, mid+1, end);
+        merge(start, end, mid, arr);
     }
 }
 
