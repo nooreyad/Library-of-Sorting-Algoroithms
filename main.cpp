@@ -88,6 +88,62 @@ namespace sortlib{
             swap(data[i], data[minIndex]);
         }
     }
+    // Quick Sort
+    template <typename T>
+    int partition(int low, int high, T A[]){
+        // take the first element as pivot
+        int i, j;
+        T pivot = A[low];
+        i = low;
+        j = high + 1;
+        do{
+            do{i++;} while(A[i] <= pivot && i <= high);
+            do{j--;} while(A[j] > pivot);
+            if(i < j)
+                swap(A[i], A[j]);
+        }while(i < j);
+        swap(A[low], A[j]);
+        return j;
+    }
+    
+    template <typename T>
+    void quickSort(int low, int high, T A[]){
+        if(low < high){
+            int j = partition(low, high, A);
+            quickSort(low, j-1, A);
+            quickSort(j+1, high, A);
+        }
+    }
+    
+    // Count Sort
+    template <typename T>
+    void countSort(T A[], int n){
+        T max = *max_element(A, A + n);
+        T min = *min_element(A, A + n);
+        int countArrSize = max - min + 1;
+        int* countArr = new int[countArrSize];
+
+        for (int i = 0; i < countArrSize; i++) {
+            countArr[i] = 0;
+        }
+        for (int i = 0; i < n; i++){
+            countArr[A[i] - min]++;
+        }
+        int countArrIndex = 0;
+        int arrIndex = 0;
+
+        while (arrIndex < n){
+            if (countArr[countArrIndex] > 0){
+                A[arrIndex] = countArrIndex + min;
+                arrIndex++;
+                countArr[countArrIndex]--;
+            }
+            else{
+                countArrIndex++;
+            }
+        }
+        delete[] countArr;
+    }
 }
 
 int random(int min, int max)
