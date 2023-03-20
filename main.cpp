@@ -78,6 +78,7 @@ namespace sortlib{
         merge(start, end, mid, arr);
     }
 
+    // Selection Sort
     template<class T>
     void selectionSort(T data[], int n){
         for(int i = 0; i < n-1; i++){
@@ -88,6 +89,7 @@ namespace sortlib{
             swap(data[i], data[minIndex]);
         }
     }
+
     // Quick Sort
     template <typename T>
     int partition(int low, int high, T A[]){
@@ -183,46 +185,46 @@ int main(){
     char arr1[200];
     generate(arr1, 200); 
     auto start = high_resolution_clock::now();
-    shellSort(arr1, 200);
+    bubbleSort(arr1,  200);
     auto stop = high_resolution_clock::now();
     auto duration = duration_cast<microseconds>(stop - start);
-    std::cout << "Time took for shell sort to sort an array of 200: " << duration.count() << " microseconds\n";
+    std::cout << "Time took for bubble sort to sort an array of 200: " << duration.count() << " microseconds\n";
 
     // generating an array of length 500
     char arr2[500];
     generate(arr2, 500); 
     start = high_resolution_clock::now();
-    shellSort(arr2, 500);
+    insertionSort(arr2, 500);
     stop = high_resolution_clock::now();
     duration = duration_cast<microseconds>(stop - start);
-    std::cout << "Time took for shell sort to sort an array of 500: " << duration.count() << " microseconds\n";
+    std::cout << "Time took for insertion sort to sort an array of 500: " << duration.count() << " microseconds\n";
     
     // generating an array of length 1000
     char arr3[1000];
     generate(arr3, 1000);
     start = high_resolution_clock::now();
-    shellSort(arr3, 1000);
+    mergeSort(arr3, 0,1000);
     stop = high_resolution_clock::now();
     duration = duration_cast<microseconds>(stop - start);
-    std::cout << "Time took for shell sort to sort an array of 1000: " << duration.count() << " microseconds\n";
+    std::cout << "Time took for merge sort to sort an array of 1000: " << duration.count() << " microseconds\n";
 
     // generating an array of length 5000
     char arr4[5000];
     generate(arr4, 5000);
     start = high_resolution_clock::now();
-    shellSort(arr4, 5000);
+    quickSort(0, 5000, arr4);
     stop = high_resolution_clock::now();
     duration = duration_cast<microseconds>(stop - start);
-    std::cout << "Time took for shell sort to sort an array of 5000: " << duration.count() << " microseconds\n";
+    std::cout << "Time took for quick sort to sort an array of 5000: " << duration.count() << " microseconds\n";
 
     // generating an array of length 10000
     char arr5[10000];
     generate(arr5, 10000);
     start = high_resolution_clock::now();
-    shellSort(arr5, 10000);
+    countSort(arr5, 10000);
     stop = high_resolution_clock::now();
     duration = duration_cast<microseconds>(stop - start);
-    std::cout << "Time took for shell sort to sort an array of 10000: " << duration.count() << " microseconds\n";
+    std::cout << "Time took for count sort to sort an array of 10000: " << duration.count() << " microseconds\n";
 
     // generating an array of length 20000
     char arr6[20000];
@@ -237,9 +239,9 @@ int main(){
     char arr7[50000];
     generate(arr7, 50000);
     start = high_resolution_clock::now();
-    shellSort(arr7, 50000);
+    mergeSort(arr7,0, 50000);
     stop = high_resolution_clock::now();
     duration = duration_cast<microseconds>(stop - start);
-    std::cout << "Time took for shell sort to sort an array of 50000: " << duration.count() << " microseconds\n";
+    std::cout << "Time took for merge sort to sort an array of 50000: " << duration.count() << " microseconds\n";
     return 0;
 }
