@@ -173,75 +173,97 @@ int random(int min, int max)
 template<class T>
 void generate(T data[], int n){
     for(int i = 0; i < n; i++){
-        data[i] = random('A', 'z');
+        data[i] = random(0, 100000);
     }
 }
 
+template<class T> 
+void printArr(T arr[], int n){
+    for(int i = 0; i < n; i++){
+        cout << arr[i] << ' ';
+    }
+    cout << '\n';
+}
 
 using namespace sortlib;
 using namespace std::chrono;
 int main(){
     // generating an array of length 200
-    char arr1[200];
+    int arr1[200];
     generate(arr1, 200); 
     auto start = high_resolution_clock::now();
     bubbleSort(arr1,  200);
     auto stop = high_resolution_clock::now();
     auto duration = duration_cast<microseconds>(stop - start);
     std::cout << "Time took for bubble sort to sort an array of 200: " << duration.count() << " microseconds\n";
+    std::cout << "The first 20 elements are: ";
+    printArr(arr1, 20);
 
     // generating an array of length 500
-    char arr2[500];
+    int arr2[500];
     generate(arr2, 500); 
     start = high_resolution_clock::now();
     insertionSort(arr2, 500);
     stop = high_resolution_clock::now();
     duration = duration_cast<microseconds>(stop - start);
     std::cout << "Time took for insertion sort to sort an array of 500: " << duration.count() << " microseconds\n";
+    std::cout << "The first 20 elements are: ";
+    printArr(arr2, 20);
     
     // generating an array of length 1000
-    char arr3[1000];
+    int arr3[1000];
     generate(arr3, 1000);
     start = high_resolution_clock::now();
-    mergeSort(arr3, 0,1000);
+    selectionSort(arr3, 1000);
     stop = high_resolution_clock::now();
     duration = duration_cast<microseconds>(stop - start);
-    std::cout << "Time took for merge sort to sort an array of 1000: " << duration.count() << " microseconds\n";
+    std::cout << "Time took for selection sort to sort an array of 1000: " << duration.count() << " microseconds\n";
+    std::cout << "The first 20 elements are: ";
+    printArr(arr3, 20);
 
     // generating an array of length 5000
-    char arr4[5000];
+    int arr4[5000];
     generate(arr4, 5000);
     start = high_resolution_clock::now();
     quickSort(0, 5000, arr4);
     stop = high_resolution_clock::now();
     duration = duration_cast<microseconds>(stop - start);
     std::cout << "Time took for quick sort to sort an array of 5000: " << duration.count() << " microseconds\n";
+    std::cout << "The first 20 elements are: ";
+    printArr(arr4, 20);
 
     // generating an array of length 10000
-    char arr5[10000];
+    int arr5[10000];
     generate(arr5, 10000);
     start = high_resolution_clock::now();
     countSort(arr5, 10000);
     stop = high_resolution_clock::now();
     duration = duration_cast<microseconds>(stop - start);
     std::cout << "Time took for count sort to sort an array of 10000: " << duration.count() << " microseconds\n";
+    std::cout << "The first 20 elements are: ";
+    printArr(arr5, 20);
 
     // generating an array of length 20000
-    char arr6[20000];
+    int arr6[20000];
     generate(arr6, 20000);
     start = high_resolution_clock::now();
     shellSort(arr6, 20000);
     stop = high_resolution_clock::now();
     duration = duration_cast<microseconds>(stop - start);
     std::cout << "Time took for shell sort to sort an array of 20000: " << duration.count() << " microseconds\n";
+    std::cout << "The first 20 elements are: ";
+    printArr(arr6, 20);
 
     // generating an array of length 50000
-    char arr7[50000];
+    int arr7[50000];
     generate(arr7, 50000);
     start = high_resolution_clock::now();
     mergeSort(arr7,0, 50000);
     stop = high_resolution_clock::now();
     duration = duration_cast<microseconds>(stop - start);
     std::cout << "Time took for merge sort to sort an array of 50000: " << duration.count() << " microseconds\n";
+    std::cout << "The first 20 elements are: ";
+    printArr(arr7, 20);
+
     return 0;
 }
